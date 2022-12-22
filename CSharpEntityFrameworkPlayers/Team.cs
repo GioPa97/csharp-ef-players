@@ -20,6 +20,7 @@ namespace CSharpEntityFrameworkPlayers
         [Required]
         public string Colours { get; set; }
 
+        public List<Team> Teams { get; set;}
     }
 
 }
