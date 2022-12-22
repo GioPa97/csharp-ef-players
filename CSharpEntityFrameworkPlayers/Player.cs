@@ -20,7 +20,5 @@ namespace CSharpEntityFrameworkPlayers
         [Required]
         public string Surname { get; set; }
 
-
-
     }
 }
