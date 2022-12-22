@@ -3,6 +3,7 @@ using CSharpEntityFrameworkPlayers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CSharpEntityFrameworkPlayers.Migrations
 {
     [DbContext(typeof(SchoolContext))]
-    partial class SchoolContextModelSnapshot : ModelSnapshot
+    [Migration("20221222154120_Revisione")]
+    partial class Revisione
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,7 +46,7 @@ namespace CSharpEntityFrameworkPlayers.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TeamId")
+                    b.Property<int>("TeamID")
                         .HasColumnType("int");
 
                     b.HasKey("PlayerID");
@@ -51,7 +54,7 @@ namespace CSharpEntityFrameworkPlayers.Migrations
                     b.HasIndex("PlayerID")
                         .IsUnique();
 
-                    b.HasIndex("TeamId");
+                    b.HasIndex("TeamID");
 
                     b.ToTable("player");
                 });
@@ -78,9 +81,12 @@ namespace CSharpEntityFrameworkPlayers.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("TeamId");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.ToTable("team");
                 });
@@ -89,7 +95,7 @@ namespace CSharpEntityFrameworkPlayers.Migrations
                 {
                     b.HasOne("CSharpEntityFrameworkPlayers.Team", "Team")
                         .WithMany("Players")
-                        .HasForeignKey("TeamId")
+                        .HasForeignKey("TeamID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

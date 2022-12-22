@@ -5,10 +5,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace CSharpEntityFrameworkPlayers
 {
     [Table("team")]
-    [Index(nameof(Name), IsUnique = true)]
+ 
     public class Team
     {
-        [Key]
+       
+        public int TeamId { get; set; }
         [Required]
         public string Name { get; set; }
 
@@ -20,7 +21,7 @@ namespace CSharpEntityFrameworkPlayers
         [Required]
         public string Colours { get; set; }
 
-        public List<Team> Teams { get; set;}
+        public List<Player> Players { get; set; } = new List<Player>();
     }
 
 }

@@ -8,7 +8,7 @@ namespace CSharpEntityFrameworkPlayers
     [Index(nameof(PlayerID), IsUnique = true)]
     public class Player
     {
-        [Required]
+
         public int PlayerID { get; set; }
 
         [Required]
@@ -19,8 +19,8 @@ namespace CSharpEntityFrameworkPlayers
         public string Name { get; set; }
         [Required]
         public string Surname { get; set; }
-
-        public Team Team { get; set; }
+       
+        public Team TeamId { get; set; }
 
     }
 }
